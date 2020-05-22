@@ -48,11 +48,11 @@ def beta(hashvalue, hashtype):
         return False
 
 def gamma(hashvalue, hashtype):
-    response = requests.get('https://www.nitrxgen.net/md5db/' + hashvalue, verify=False).text
-    if response:
-        return response
-    else:
-        return False
+    # response = requests.get('https://www.nitrxgen.net/md5db/' + hashvalue, verify=False).text
+    # if response:
+    #     return response
+    # else:
+    return False
 
 def delta(hashvalue, hashtype):
     #data = {'auth':'8272hgt', 'hash':hashvalue, 'string':'','Submit':'Submit'}
