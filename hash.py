@@ -48,11 +48,11 @@ def beta(hashvalue, hashtype):
         return False
 
 def gamma(hashvalue, hashtype):
-    # response = requests.get('https://www.nitrxgen.net/md5db/' + hashvalue, verify=False).text
-    # if response:
-    #     return response
-    # else:
-    return False
+    response = requests.get('https://www.nitrxgen.net/md5db/' + hashvalue).text
+    if response:
+        return response
+    else:
+        return False
 
 def delta(hashvalue, hashtype):
     #data = {'auth':'8272hgt', 'hash':hashvalue, 'string':'','Submit':'Submit'}
@@ -64,7 +64,7 @@ def delta(hashvalue, hashtype):
     return False
 
 def theta(hashvalue, hashtype):
-    response = requests.get('https://md5decrypt.net/Api/api.php?hash=%s&hash_type=%s&email=deanna_abshire@proxymail.eu&code=1152464b80a61728' % (hashvalue, hashtype)).text
+    response = requests.get('https://md5decrypt.net/Api/api.php?hash=%s&hash_type=%s&email=hogad85544@themesw.com&code=85d8d439297a8764' % (hashvalue, hashtype)).text
     if len(response) != 0:
         return response
     else:
