@@ -2,9 +2,9 @@
 
 import re
 import os
-import requests
 import argparse
 import concurrent.futures
+from database import Database
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', help='hash', dest='hash')
@@ -36,49 +36,15 @@ if directory:
     if directory[-1] == '/':
         directory = directory[:-1]
 
-def alpha(hashvalue, hashtype):
-    return False
-
-def beta(hashvalue, hashtype):
-    response = requests.get('https://hashtoolkit.com/reverse-hash/?hash=' + hashvalue).text
-    match = re.search(r'/generate-hash/\?text=(.*?)"', response)
-    if match:
-        return match.group(1)
-    else:
-        return False
-
-def gamma(hashvalue, hashtype):
-    response = requests.get('https://www.nitrxgen.net/md5db/' + hashvalue).text
-    if response:
-        return response
-    else:
-        return False
-
-def delta(hashvalue, hashtype):
-    #data = {'auth':'8272hgt', 'hash':hashvalue, 'string':'','Submit':'Submit'}
-    #response = requests.post('http://hashcrack.com/index.php' , data).text
-    #match = re.search(r'<span class=hervorheb2>(.*?)</span></div></TD>', response)
-    #if match:
-    #    return match.group(1)
-    #else:
-    return False
-
-def theta(hashvalue, hashtype):
-    response = requests.get('https://md5decrypt.net/Api/api.php?hash=%s&hash_type=%s&email=hogad85544@themesw.com&code=85d8d439297a8764' % (hashvalue, hashtype)).text
-    if len(response) != 0:
-        return response
-    else:
-        return False
-
 print ('''\033[1;97m_  _ ____ ____ _  _    ___  _  _ ____ ___ ____ ____
 |__| |__| [__  |__|    |__] |  | [__   |  |___ |__/
 |  | |  | ___] |  |    |__] |__| ___]  |  |___ |  \  %sv3.0\033[0m\n''' % red)
 
-md5 = [gamma, alpha, beta, theta, delta]
-sha1 = [alpha, beta, theta, delta]
-sha256 = [alpha, beta, theta]
-sha384 = [alpha, beta, theta]
-sha512 = [alpha, beta, theta]
+md5 = [Database.md5decrypt, Database.nitrxgen, Database.my_addr, Database.gromweb]
+sha1 = [Database.md5decrypt, Database.gromweb]
+sha256 = [Database.md5decrypt]
+sha384 = [Database.md5decrypt]
+sha512 = [Database.md5decrypt]
 
 def crack(hashvalue):
     result = False
