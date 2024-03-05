@@ -42,12 +42,11 @@ print ('''\033[1;97m_  _ ____ ____ _  _    ___  _  _ ____ ___ ____ ____
 
 md5 = [Database.md5decrypt, Database.nitrxgen, Database.my_addr, Database.gromweb]
 sha1 = [Database.md5decrypt, Database.gromweb]
-sha256 = [Database.md5decrypt]
-sha384 = [Database.md5decrypt]
-sha512 = [Database.md5decrypt]
+sha256 = [Database.md5decrypt, Database.gromweb]
+sha384 = [Database.md5decrypt, Database.gromweb]
+sha512 = [Database.md5decrypt, Database.gromweb]
 
 def crack(hashvalue):
-    result = False
     if len(hashvalue) == 32:
         if not file:
             print ('%s Hash function : MD5' % info)
