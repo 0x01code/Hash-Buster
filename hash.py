@@ -38,7 +38,7 @@ if directory:
 
 print ('''\033[1;97m_  _ ____ ____ _  _    ___  _  _ ____ ___ ____ ____
 |__| |__| [__  |__|    |__] |  | [__   |  |___ |__/
-|  | |  | ___] |  |    |__] |__| ___]  |  |___ |  \  %sv3.0\033[0m\n''' % red)
+|  | |  | ___] |  |    |__] |__| ___]  |  |___ |  \\  %sv3.0\033[0m\n''' % red)
 
 md5 = [Database.md5decrypt, Database.nitrxgen, Database.my_addr, Database.gromweb]
 sha1 = [Database.md5decrypt, Database.gromweb]
@@ -98,7 +98,7 @@ def threaded(hashvalue):
         result[hashvalue] = resp
 
 def grepper(directory):
-    os.system('''grep -Pr "[a-f0-9]{128}|[a-f0-9]{96}|[a-f0-9]{64}|[a-f0-9]{40}|[a-f0-9]{32}" %s --exclude=\*.{png,jpg,jpeg,mp3,mp4,zip,gz} |
+    os.system('''grep -Pr "[a-f0-9]{128}|[a-f0-9]{96}|[a-f0-9]{64}|[a-f0-9]{40}|[a-f0-9]{32}" %s --exclude=\\*.{png,jpg,jpeg,mp3,mp4,zip,gz} |
         grep -Po "[a-f0-9]{128}|[a-f0-9]{96}|[a-f0-9]{64}|[a-f0-9]{40}|[a-f0-9]{32}" >> %s/%s.txt''' % (directory, cwd, directory.split('/')[-1]))
     print ('%s Results saved in %s.txt' % (info, directory.split('/')[-1]))
 
