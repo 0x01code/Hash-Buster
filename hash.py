@@ -40,11 +40,11 @@ print ('''\033[1;97m_  _ ____ ____ _  _    ___  _  _ ____ ___ ____ ____
 |__| |__| [__  |__|    |__] |  | [__   |  |___ |__/
 |  | |  | ___] |  |    |__] |__| ___]  |  |___ |  \\  %sv3.0\033[0m\n''' % red)
 
-md5 = [Database.md5decrypt, Database.nitrxgen, Database.my_addr, Database.gromweb]
-sha1 = [Database.md5decrypt, Database.gromweb]
-sha256 = [Database.md5decrypt, Database.gromweb]
-sha384 = [Database.md5decrypt, Database.gromweb]
-sha512 = [Database.md5decrypt, Database.gromweb]
+md5 = [Database.md5decrypt, Database.nitrxgen, Database.my_addr, Database.gromweb, Database.md5hashing]
+sha1 = [Database.md5decrypt, Database.gromweb, Database.md5hashing]
+sha256 = [Database.md5decrypt, Database.gromweb, Database.md5hashing]
+sha384 = [Database.md5decrypt, Database.gromweb, Database.md5hashing]
+sha512 = [Database.md5decrypt, Database.gromweb, Database.md5hashing]
 
 def crack(hashvalue):
     if len(hashvalue) == 32:
