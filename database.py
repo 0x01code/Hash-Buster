@@ -8,7 +8,7 @@ class Database:
         md4, md5, sha1, sha256, sha384, sha512
         """
         response = requests.get('https://md5decrypt.net/Api/api.php?hash=%s&hash_type=%s&email=hogad85544@themesw.com&code=85d8d439297a8764' % (hashvalue, hashtype)).text
-        if len(response) != 0:
+        if 'CODE ERREUR' not in response:
             return response
         else:
             return False
