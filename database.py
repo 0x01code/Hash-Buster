@@ -12,16 +12,6 @@ class Database:
             return response
         else:
             return False
-
-    def nitrxgen(hashvalue, hashtype):
-        """
-        md5
-        """
-        response = requests.get('https://www.nitrxgen.net/md5db/' + hashvalue).text
-        if response:
-            return response
-        else:
-            return False
         
     def my_addr(hashvalue, hashtype):
         """
@@ -58,6 +48,22 @@ class Database:
         response = requests.get(f'https://md5hashing.net/hash/{hashtype}/{hashvalue}').text
         if response.find('successfully reversed into the string') > 0:
             plain = re.findall(r'<a class="String" href=".+">(.*?)<\/a>', response)[0]
+            return plain
+        else:
+            return False
+        
+    def cmd5(hashvalue, hashtype):
+        """
+        md5, sha1, sha256, sha512
+        """
+        payload = f'__EVENTTARGET=&ctl00%24ContentPlaceHolder1%24TextBoxInput={hashvalue}&ctl00%24ContentPlaceHolder1%24InputHashType=md5&ctl00%24ContentPlaceHolder1%24Button1=decrypt'
+        headers = {
+            'referer': 'https://www.cmd5.org/',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
+        response = requests.post('https://www.cmd5.org/', data=payload, headers=headers).text
+        plain = re.findall(r'onmouseover="toggle\(\);">(.*?)<\/span>', response)
+        if plain != '':
             return plain
         else:
             return False
